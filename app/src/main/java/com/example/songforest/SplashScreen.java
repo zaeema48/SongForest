@@ -15,16 +15,16 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); //To remove title bar
 
-        new Handler().postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable() {  //is used to delay run method until the splashtime is over
             @Override
             public void run() {
                 Intent intent = new Intent (SplashScreen.this, MainActivity.class);
                 startActivity(intent);
-                finish();
+                finish();   //splashScreen will not get repeated everytime when back button is clicked
             }
-        }, splashTimer);
+        }, splashTimer);    //splashtimer is passed into the paranthesis of postDelayed method.
 
     }
 }

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "705689500762",
+    "project_id": "songforest",
+    "storage_bucket": "songforest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705689500762:android:e1cdb961bcdf12ad656c63",
+        "android_client_info": {
+          "package_name": "com.example.songforest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "705689500762-34gcd8t7fh4hr8aastamv0pkj0pndvu7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.songforest",
+            "certificate_hash": "1489bac626ce413f735dbac5f3e019e427532980"
+          }
+        },
+        {
+          "client_id": "705689500762-j7mr5a40nv7gah4fdq0fba086t830hi9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJqfj2U8Ms5ujYRFvvHzKmA5LQp0v85_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705689500762-j7mr5a40nv7gah4fdq0fba086t830hi9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
