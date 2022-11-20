@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B0BFCC"
+    tools:context=".CreateActivity">
+
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome"
+        android:textSize="45dp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:layout_marginTop="150dp"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        app:cardCornerRadius="130dp"
+        android:layout_below="@+id/textView6"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        >
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/img" />
+
+    </androidx.cardview.widget.CardView>
+
+    <EditText
+        android:id="@+id/entername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="90dp"
+        android:layout_marginRight="90dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/black"
+        android:ems="10"
+        android:textSize="20sp"
+        android:inputType="textPersonName"
+       android:hint="Enter your name" />
+
+    <android.widget.Button
+        android:id="@+id/profileButton"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="SAVE PROFILE"
+        android:layout_below="@+id/entername"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:background="#4FA3E6"
+        />
+
+</RelativeLayout>

@@ -45,11 +45,11 @@
         android:id="@+id/countryCode"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        app:ccp_areaCodeDetectedCountry="true"
         android:layout_below="@id/textView4"
-        android:layout_marginLeft="150dp"
-        android:layout_marginRight="100dp"
+        android:layout_marginLeft="100dp"
         android:layout_marginTop="15dp"
+        android:layout_marginRight="100dp"
+        app:ccp_areaCodeDetectedCountry="true"
         app:ccp_autoDetectCountry="true">
 
     </com.hbb20.CountryCodePicker>
