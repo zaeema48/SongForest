@@ -53,7 +53,7 @@ public class CreateActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");  //will fetch all the images from the phone
-                startActivityForResult(intent, 45); //will create image uri
+                startActivityForResult(intent, 45); //will create image uri (WILL CALL THE METHOD ActivityResult)
             }
 
         });
@@ -100,5 +100,16 @@ public class CreateActivity extends AppCompatActivity {
         });
 
 
+    }
+    
+    //NEW ADDED LINES FROM HERE
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(data.getData()!=null){
+            profile.setImageURI(data.getData());
+            selectedImageUri=data.getData();
+        }
     }
 }
