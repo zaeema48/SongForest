@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#DDC0E3"
     tools:context=".HomePage">
 
     <androidx.appcompat.widget.Toolbar
@@ -14,13 +15,23 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SongForest"
-        android:textColor="@color/white"
-        android:textSize="27dp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"/>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        app:tabIndicatorColor="#9C27B0"
+        app:tabIndicatorHeight="5dp"
+        app:tabSelectedTextColor="#86129A"
+        app:tabTextColor="#480553">
+
+
+    </com.google.android.material.tabs.TabLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_above="@+id/tab" />
+
 </RelativeLayout>

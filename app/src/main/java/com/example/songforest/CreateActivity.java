@@ -38,14 +38,14 @@ public class CreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
 
-        profile=findViewById(R.id.imageView3);
-        name=findViewById(R.id.entername);
-        save_profile=findViewById(R.id.profileButton);
-        progressbar=findViewById(R.id.progressBar2);
+        profile = findViewById(R.id.imageView3);
+        name = findViewById(R.id.entername);
+        save_profile = findViewById(R.id.profileButton);
+        progressbar = findViewById(R.id.progressBar2);
 
-        firebaseAuth=FirebaseAuth.getInstance();
-        firebaseDatabase=FirebaseDatabase.getInstance();
-        firebaseStorage=FirebaseStorage.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseStorage = FirebaseStorage.getInstance();
 
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,17 +61,17 @@ public class CreateActivity extends AppCompatActivity {
         save_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username=name.getText().toString();
-                if(username.isEmpty()){
+                String username = name.getText().toString();
+                if (username.isEmpty()) {
                     Toast.makeText(CreateActivity.this, "Enter your Name!!", Toast.LENGTH_SHORT).show();
                 }
                 progressbar.setVisibility(View.VISIBLE);
 
-                StorageReference imageReference=firebaseStorage.getReference().child("Profiles").child(firebaseAuth.getUid());
+                StorageReference imageReference = firebaseStorage.getReference().child("Profiles").child(firebaseAuth.getUid());
                 imageReference.putFile(selectedImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             imageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
@@ -99,12 +99,9 @@ public class CreateActivity extends AppCompatActivity {
             }
         });
 
-
     }
-    
-    //NEW ADDED LINES FROM HERE
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @NonNull Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(data.getData()!=null){
@@ -113,3 +110,5 @@ public class CreateActivity extends AppCompatActivity {
         }
     }
 }
+
+

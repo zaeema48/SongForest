@@ -39,6 +39,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:20.1.0'
     implementation 'com.hbb20:ccp:2.5.1'    //library for country codes
     implementation platform('com.google.firebase:firebase-bom:31.0.3')
+    implementation 'com.karumi:dexter:6.2.3'
+    implementation 'com.squareup.picasso:picasso:2.71828' //adding picasso to fetch images
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'

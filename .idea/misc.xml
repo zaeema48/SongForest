@@ -3,11 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/zaeema/AndroidStudioProjects/SongForest/app/src/main/res/drawable/back.xml" value="0.2115" />
         <entry key="..\:/Users/zaeema/AndroidStudioProjects/SongForest/app/src/main/res/layout/activity_create.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/zaeema/AndroidStudioProjects/SongForest/app/src/main/res/layout/activity_home.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/zaeema/AndroidStudioProjects/SongForest/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/zaeema/AndroidStudioProjects/SongForest/app/src/main/res/layout/activity_splash_screen.xml" value="0.22" />
         <entry key="..\:/Users/zaeema/AndroidStudioProjects/SongForest/app/src/main/res/layout/activity_user_authentication.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/zaeema/AndroidStudioProjects/SongForest/app/src/main/res/layout/fragment_album.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/zaeema/AndroidStudioProjects/SongForest/app/src/main/res/layout/fragment_blank.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/zaeema/AndroidStudioProjects/SongForest/app/src/main/res/layout/fragment_profile.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/zaeema/AndroidStudioProjects/SongForest/app/src/main/res/layout/fragment_song.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/zaeema/AndroidStudioProjects/SongForest/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2115" />
       </map>
     </option>
   </component>
