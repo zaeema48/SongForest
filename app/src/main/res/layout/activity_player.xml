@@ -56,8 +56,8 @@
             android:id="@+id/cover_art"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/make_cover"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/make_cover" />
 
         <ImageView
             android:id="@+id/imageViewGradient"
@@ -157,6 +157,44 @@
             android:layout_toEndOf="@id/play_pause"
             app:srcCompat="@drawable/ic_skip_next"
             android:layout_marginStart="26dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/seek_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:padding="5dp"
+        android:layout_above="@id/layout_bottom">
+
+        <TextView
+            android:id="@+id/durationPlayed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1:25"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp"
+            />
+
+        <TextView
+            android:id="@+id/durationTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4:25"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="15dp"
+            />
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"/>
     </RelativeLayout>
 
 
