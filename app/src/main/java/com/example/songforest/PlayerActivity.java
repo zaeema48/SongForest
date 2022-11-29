@@ -4,13 +4,17 @@ import static com.example.songforest.HomePage.musicFiles;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -20,7 +24,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class PlayerActivity extends AppCompatActivity {
+public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnCompletionListener {
     TextView song_name, artist_name, duration_played, duration_total;
     ImageView cover_art, next_Button, prev_Button, back_Button, shuffle_Button, repeat_Button;
     FloatingActionButton PlayPauseButton;
@@ -43,6 +47,8 @@ public class PlayerActivity extends AppCompatActivity {
 
         song_name.setText(ListSongs.get(position).getTitle());
         artist_name.setText(ListSongs.get(position).getArtist());
+        //to change the song after it's finished
+        mediaPlayer.setOnCompletionListener(this);
 
         //for dragging the seekbar
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -259,7 +265,8 @@ public class PlayerActivity extends AppCompatActivity {
                     handler.postDelayed(this,1000); //1000->1s
                 }
             });
-            PlayPauseButton.setImageResource(R.drawable.ic_baseline_pause);
+            mediaPlayer.setOnCompletionListener(this);
+            PlayPauseButton.setBackgroundResource(R.drawable.ic_baseline_pause);
             mediaPlayer.start();
         }
         else{
@@ -281,12 +288,12 @@ public class PlayerActivity extends AppCompatActivity {
                         //for automatic change in the position of the seekBar according to time
                         int mCurrentPosition=mediaPlayer.getCurrentPosition()/1000;
                         seekBar.setProgress(mCurrentPosition);
-
                     }
                     handler.postDelayed(this,1000); //1000->1s
                 }
             });
-            PlayPauseButton.setImageResource(R.drawable.ic_baseline_play);
+            mediaPlayer.setOnCompletionListener(this);
+            PlayPauseButton.setBackgroundResource(R.drawable.ic_baseline_play);
 
         }
 
@@ -310,8 +317,8 @@ public class PlayerActivity extends AppCompatActivity {
 
     private void nextButtonClicked(){
         if(mediaPlayer.isPlaying()){
-            mediaPlayer.stop();
-            mediaPlayer.release();
+            mediaPlayer.stop();   //to stop the current music
+            mediaPlayer.release(); //to release the current music
             position=((position+1)%ListSongs.size());
             uri=Uri.parse(ListSongs.get(position).getPath());
 
@@ -328,12 +335,12 @@ public class PlayerActivity extends AppCompatActivity {
                         //for automatic change in the position of the seekBar according to time
                         int mCurrentPosition=mediaPlayer.getCurrentPosition()/1000;
                         seekBar.setProgress(mCurrentPosition);
-
                     }
                     handler.postDelayed(this,1000); //1000->1s
                 }
             });
-            PlayPauseButton.setImageResource(R.drawable.ic_baseline_pause);
+            mediaPlayer.setOnCompletionListener(this);
+            PlayPauseButton.setBackgroundResource(R.drawable.ic_baseline_pause);
             mediaPlayer.start();
         }
         else{
@@ -355,13 +362,60 @@ public class PlayerActivity extends AppCompatActivity {
                         //for automatic change in the position of the seekBar according to time
                         int mCurrentPosition=mediaPlayer.getCurrentPosition()/1000;
                         seekBar.setProgress(mCurrentPosition);
-
                     }
                     handler.postDelayed(this,1000); //1000->1s
                 }
             });
-            PlayPauseButton.setImageResource(R.drawable.ic_baseline_play);
+            mediaPlayer.setOnCompletionListener(this);
+            PlayPauseButton.setBackgroundResource(R.drawable.ic_baseline_play);
 
         }
     }
+
+    @Override
+    public void onCompletion(MediaPlayer mediaPlayer) {
+        nextButtonClicked();
+        if(mediaPlayer!=null){
+            mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
+            mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(this);
+        }
+    }
+
+//    public void ImageAnimation(Context context, ImageView imageView, Bitmap bitmap){
+//        Animation animOut= AnimationUtils.loadAnimation(context, android.R.anim.fade_out);
+//        Animation animIn= AnimationUtils.loadAnimation(context, android.R.anim.fade_in);
+//
+//        animOut.setAnimationListener(new Animation.AnimationListener() {
+//            @Override
+//            public void onAnimationStart(Animation animation) {
+//
+//            }
+//
+//            @Override
+//            public void onAnimationEnd(Animation animation) {
+//                Glide.with(context).load(bitmap).into(imageView);
+//                animIn.setAnimationListener(new Animation.AnimationListener() {
+//                    @Override
+//                    public void onAnimationStart(Animation animation) {
+//                    }
+//
+//                    @Override
+//                    public void onAnimationEnd(Animation animation) {
+//                    }
+//
+//                    @Override
+//                    public void onAnimationRepeat(Animation animation) {
+//                    }
+//                });
+//                imageView.startAnimation(animIn);
+//            }
+//
+//            @Override
+//            public void onAnimationRepeat(Animation animation) {
+//            }
+//        });
+//        imageView.startAnimation(animOut);
+//    }
+
 }
