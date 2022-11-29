@@ -16,23 +16,11 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionDeniedResponse;
-import com.karumi.dexter.listener.PermissionGrantedResponse;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.single.PermissionListener;
 
-import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class HomePage extends AppCompatActivity {
@@ -71,7 +59,7 @@ public class HomePage extends AppCompatActivity {
             } else {
                 ActivityCompat.requestPermissions(HomePage.this, new String[]{
                         Manifest.permission.WRITE_EXTERNAL_STORAGE
-                }, requestCode);
+                }, RequestCode);
             }
         }
     }
