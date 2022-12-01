@@ -26,6 +26,8 @@ import java.util.ArrayList;
 public class HomePage extends AppCompatActivity {
     public static int RequestCode=1;
     public static ArrayList<MusicFiles> musicFiles;
+    static boolean shuffleBoolean=false, repeatedBoolean= false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
