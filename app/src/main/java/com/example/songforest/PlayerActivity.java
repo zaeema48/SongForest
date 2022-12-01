@@ -1,5 +1,6 @@
 package com.example.songforest;
 
+import static com.example.songforest.AlbumDetailsAdapter.albumFiles;
 import static com.example.songforest.HomePage.musicFiles;
 import static com.example.songforest.HomePage.repeatedBoolean;
 import static com.example.songforest.HomePage.shuffleBoolean;
@@ -52,6 +53,14 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
         artist_name.setText(ListSongs.get(position).getArtist());
         //to change the song after it's finished
         mediaPlayer.setOnCompletionListener(this);
+
+        back_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(PlayerActivity.this,HomePage.class);
+                startActivity(intent);
+            }
+        });
 
         //for dragging the seekbar
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -135,8 +144,13 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
 
     public void getIntentMethod(){
         position = getIntent().getIntExtra("position", -1);
-
-        ListSongs = musicFiles;
+        String sender = getIntent().getStringExtra("sender");
+        if(sender!= null && sender.equals("albumDetails")){
+            ListSongs=albumFiles;
+        }
+        else {
+            ListSongs = musicFiles;
+        }
         if(ListSongs!=null){
             PlayPauseButton.setImageResource(R.drawable.ic_baseline_pause);
             uri = Uri.parse(ListSongs.get(position).getPath());

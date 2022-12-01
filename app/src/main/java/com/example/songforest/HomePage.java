@@ -27,7 +27,7 @@ public class HomePage extends AppCompatActivity {
     public static int RequestCode=1;
     public static ArrayList<MusicFiles> musicFiles;
     static boolean shuffleBoolean=false, repeatedBoolean= false;
-
+    static ArrayList<MusicFiles> albums=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,6 +118,7 @@ public class HomePage extends AppCompatActivity {
     //will return all the songs from the storage
     public static ArrayList<MusicFiles> getAllAudio(Context context){
         ArrayList<MusicFiles> temp_audioList= new ArrayList<>();
+        ArrayList<String> duplicate =new ArrayList<>();
         Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
         String[] projection = {
                 MediaStore.Audio.Media.ALBUM,
@@ -138,6 +139,12 @@ public class HomePage extends AppCompatActivity {
                 //will add all songs one by one
                 MusicFiles musicFiles = new MusicFiles(path,title, artist, album, duration);
                 temp_audioList.add(musicFiles);
+
+                //to remove the duplicate albums
+                if(!duplicate.contains(album)){
+                    albums.add(musicFiles);
+                    duplicate.add(album);
+                }
 
             }
             cursor.close();
