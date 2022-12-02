@@ -3,6 +3,7 @@ package com.example.songforest;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -12,22 +13,27 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
-public class HomePage extends AppCompatActivity {
+public class HomePage extends AppCompatActivity implements SearchView.OnQueryTextListener {
     public static int RequestCode=1;
     public static ArrayList<MusicFiles> musicFiles;
     static boolean shuffleBoolean=false, repeatedBoolean= false;
     static ArrayList<MusicFiles> albums=new ArrayList<>();
+    private String MY_SORT_PREF="SortOrder";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +85,8 @@ public class HomePage extends AppCompatActivity {
 
     }
 
+
+
     public static class ViewPagerAdapter extends FragmentPagerAdapter {
 
         private ArrayList<Fragment> fragments;
@@ -116,10 +124,22 @@ public class HomePage extends AppCompatActivity {
 
 
     //will return all the songs from the storage
-    public static ArrayList<MusicFiles> getAllAudio(Context context){
-        ArrayList<MusicFiles> temp_audioList= new ArrayList<>();
+    public  ArrayList<MusicFiles> getAllAudio(Context context){
+        SharedPreferences preferences=getSharedPreferences(MY_SORT_PREF,MODE_PRIVATE);
+        String sortOrder=preferences.getString("sorting","sortByName");
         ArrayList<String> duplicate =new ArrayList<>();
+        albums.clear();
+        ArrayList<MusicFiles> temp_audioList= new ArrayList<>();
+        String order=null;
         Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+        switch (sortOrder){
+            case "sortByName":
+                order=MediaStore.MediaColumns.DISPLAY_NAME +" ASC";
+                break;
+            case "sortByDate":
+                order=MediaStore.MediaColumns.DATE_ADDED +" DESC";
+                break;
+        }
         String[] projection = {
                 MediaStore.Audio.Media.ALBUM,
                 MediaStore.Audio.Media.TITLE,
@@ -128,7 +148,7 @@ public class HomePage extends AppCompatActivity {
                 MediaStore.Audio.Media.ARTIST
         };
 
-        Cursor cursor = context.getContentResolver().query(uri, projection,null,null,null);
+        Cursor cursor = context.getContentResolver().query(uri, projection,null,null,order);
         if(cursor!=null){
             while(cursor.moveToNext()){
                 String album = cursor.getString(0);
@@ -152,6 +172,53 @@ public class HomePage extends AppCompatActivity {
 
         return temp_audioList;
     }
+     //Menu option code for search bar and sorting
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search,menu);
+        MenuItem menuItem=menu.findItem(R.id.search_bar);
 
+        SearchView searchView=(SearchView) menuItem.getActionView();
+        searchView.setOnQueryTextListener(this);
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        String userInput= newText.toLowerCase();
+        ArrayList<MusicFiles> myFiles=new ArrayList<>();
+
+        for(MusicFiles song :musicFiles){
+            if(song.getTitle().toLowerCase().contains(userInput))
+                myFiles.add(song);
+        }
+        SongFragment.musicAdapter.updateList(myFiles);
+        return true;
+    }
+
+    //for selecting the sorting preference
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        SharedPreferences.Editor editor=getSharedPreferences(MY_SORT_PREF,MODE_PRIVATE).edit();
+
+        switch (item.getItemId()){
+            case R.id.nameSort:
+                editor.putString("sorting","sortByName");
+                editor.apply();
+                this.recreate();
+                break;
+            case R.id.dateSort:
+                editor.putString("sorting","sortByDate");
+                editor.apply();
+                this.recreate();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

@@ -4,6 +4,7 @@ import static com.example.songforest.AlbumDetailsAdapter.albumFiles;
 import static com.example.songforest.HomePage.musicFiles;
 import static com.example.songforest.HomePage.repeatedBoolean;
 import static com.example.songforest.HomePage.shuffleBoolean;
+import static com.example.songforest.MusicAdapter.mFiles;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -149,7 +150,7 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
             ListSongs=albumFiles;
         }
         else {
-            ListSongs = musicFiles;
+            ListSongs = mFiles;
         }
         if(ListSongs!=null){
             PlayPauseButton.setImageResource(R.drawable.ic_baseline_pause);

@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 
 public class SongFragment extends Fragment {
     RecyclerView recyclerView;
-    MusicAdapter musicAdapter;
+    static MusicAdapter musicAdapter;
 
     public SongFragment(){
         //Required in empty public constructor

@@ -7,11 +7,17 @@
         <entry key="..\:/Users/Zeeshan/OneDrive/android/SongForest/app/src/main/res/layout/activity_album_details.xml" value="0.25" />
         <entry key="..\:/Users/Zeeshan/OneDrive/android/SongForest/app/src/main/res/layout/activity_create.xml" value="0.25" />
         <entry key="..\:/Users/Zeeshan/OneDrive/android/SongForest/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/Users/Zeeshan/OneDrive/android/SongForest/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Zeeshan/OneDrive/android/SongForest/app/src/main/res/layout/activity_player.xml" value="0.25" />
+        <entry key="..\:/Users/Zeeshan/OneDrive/android/SongForest/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
+        <entry key="..\:/Users/Zeeshan/OneDrive/android/SongForest/app/src/main/res/layout/activity_user_authentication.xml" value="0.25" />
+        <entry key="..\:/Users/Zeeshan/OneDrive/android/SongForest/app/src/main/res/layout/album_items.xml" value="0.25" />
         <entry key="..\:/Users/Zeeshan/OneDrive/android/SongForest/app/src/main/res/layout/fragment_album.xml" value="0.24351851851851852" />
         <entry key="..\:/Users/Zeeshan/OneDrive/android/SongForest/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Users/Zeeshan/OneDrive/android/SongForest/app/src/main/res/layout/fragment_song.xml" value="0.24351851851851852" />
         <entry key="..\:/Users/Zeeshan/OneDrive/android/SongForest/app/src/main/res/layout/music_items.xml" value="0.24351851851851852" />
+        <entry key="..\:/Users/Zeeshan/OneDrive/android/SongForest/app/src/main/res/menu/popup.xml" value="0.25" />
+        <entry key="..\:/Users/Zeeshan/OneDrive/android/SongForest/app/src/main/res/menu/search.xml" value="0.25" />
         <entry key="..\:/Users/zaeema/AndroidStudioProjects/SongForest/app/src/main/res/drawable/back.xml" value="0.2115" />
         <entry key="..\:/Users/zaeema/AndroidStudioProjects/SongForest/app/src/main/res/layout/activity_create.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/zaeema/AndroidStudioProjects/SongForest/app/src/main/res/layout/activity_home.xml" value="0.20416666666666666" />

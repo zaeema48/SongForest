@@ -7,25 +7,7 @@
     android:background="#DDC0E3"
     tools:context=".HomePage">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/purple_200"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SongForest"
-        android:layout_marginLeft="8dp"
-        android:layout_alignParentTop="true"
-        android:padding="12dp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="20dp"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab"
@@ -43,8 +25,8 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
         android:layout_height="match_parent"
-        android:layout_above="@+id/tab"
-        android:layout_below="@+id/toolbar" />
+        android:layout_above="@+id/tab" />
 
 </RelativeLayout>

@@ -38,7 +38,7 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder
     }
 
     private Context mContext;
-    private ArrayList<MusicFiles> mFiles;
+    static ArrayList<MusicFiles> mFiles;
 
     //making constructor to store data into local storage
     public MusicAdapter(Context mContext, ArrayList<MusicFiles> mFiles) {
@@ -124,6 +124,10 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.MyViewHolder
         retriever.release();
         return art;
     }
-
-
+    //for search query
+    void updateList(ArrayList<MusicFiles> musicFilesArrayList){
+        mFiles=new ArrayList<>();
+        mFiles.addAll(musicFilesArrayList);
+        notifyDataSetChanged();
+    }
 }
